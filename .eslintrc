@@ -1,0 +1,36 @@
+{
+	"extends": "airbnb",
+	"parser": "babel-eslint",
+	"ecmaFeatures": {
+		"classes": true
+	},
+	"rules": {
+		"no-restricted-syntax": ["error", "LabeledStatement", "WithStatement"],
+		"react/prefer-stateless-function": ["off"],
+		"linebreak-style": 0,
+		"react/jsx-indent": ["off", "tab"],
+		"react/jsx-indent-props" : "off",
+		"react/forbid-prop-types": "warn",
+		"react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }],
+		"indent": ["off", "tab"],
+		"comma-dangle": ["error", "never"],
+		"global-require": "off",
+		"no-tabs": "off",
+		"brace-style": "off",
+		"no-console": "off",
+		"no-underscore-dangle" : "off",
+		"import/no-extraneous-dependencies": "off",
+		"import/extensions": "off",
+		"import/no-unresolved": "off",
+		"import/prefer-default-export": "warn",
+		"class-methods-use-this": "off",
+		"prefer-promise-reject-errors": "off",
+		"no-nested-ternary": "off",
+		"no-lonely-if": "off",
+		"prefer-destructuring": "off",
+		"no-loop-func": "off",
+		"no-await-in-loop": "off",
+		"object-curly-newline": "off",
+		"one-var": "off"
+	}
+}
