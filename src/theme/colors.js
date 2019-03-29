@@ -6,8 +6,10 @@
 
 
 const colorsRepo = {
-    black: '#111',
-    white: '#fff',
+    primary: "#a334a3",
+    secondary: "#e572e5",
+    black: '#252525',
+    white: '#efefef',
     red: '#860f0f',
     green: '#a2bbbb',
     darkGreen: '#1f3737',
@@ -36,6 +38,7 @@ const shadow = {
 };
 
 export default {
+    ...colorsRepo,
     text,
     background,
     border,

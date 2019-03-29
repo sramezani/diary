@@ -16,7 +16,8 @@ import {
 import { AppColors, AppFonts, AppStyles, AppSizes } from '@theme/';
 
 // Screens
-import SplashContainer from '@containers/Intro/Splash/';
+import Splash from '@containers/Intro/Splash/';
+import Login from '@containers/Intro/Login/';
 
 // Components
 import { Icon, Touchable } from '@components';
@@ -62,7 +63,7 @@ const transitionConfig = () => ({
 });
 
 const navigationConfig = {
-    navigationOptions: {
+    defaultNavigationOptions: {
         ...headerOptions,
         headerBackImage: <Icon name="arrow-back" size={20} />,
         headerBackTitle: null
@@ -71,12 +72,32 @@ const navigationConfig = {
     // headerMode: 'float'
 };
 
+const AutStackNavigator = createStackNavigator({
+
+    Login: {
+        screen: Login,
+        navigationOptions: {
+            header: null
+        }
+    }
+
+}, {
+    ...navigationConfig
+});
 
 const AppNavigatorScreens = {
     Splash: {
-        screen: SplashContainer,
+        screen: Splash,
         navigationOptions: { header: null }
-    }
+    },
+    Auth: {
+        screen: AutStackNavigator,
+        navigationOptions: { header: null }
+    },
+    // Main: {
+    //     screen: MainNavigator,
+    //     navigationOptions: { header: null }
+    // }
 };
 
 const AppNavigatorConfig = {

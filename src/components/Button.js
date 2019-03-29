@@ -28,10 +28,14 @@ class CustomButton extends React.PureComponent {
 
 		switch (this.props.color) {
 			case 'green':
-				containerStyle.backgroundColor = '#63851f';
-				textStyle.color = '#fff';
+				containerStyle.backgroundColor = AppColors.green;
+				textStyle.color = AppColors.white;
+				break;
 
-			break;
+			case 'desabled':
+				containerStyle.backgroundColor = '#a5d1b7';
+				textStyle.color = AppColors.white;
+				break;
 
 			default: break;
 		}

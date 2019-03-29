@@ -5,7 +5,7 @@ import LinearGradient from 'react-native-linear-gradient';
 
 // Consts and Libs
 import { AppSizes, AppStyles, AppColors } from '@theme/';
-import { Util } from '@lib/';
+import { Util, Action } from '@lib/';
 
 // Components
 import { Text, Loading } from '@components/';
@@ -34,10 +34,11 @@ class SplashView extends React.Component {
     }
 
     componentDidMount() {
-        StatusBar.setBackgroundColor('#a334a3');
+        StatusBar.setBackgroundColor(AppColors.primary);
         setTimeout(() => {
-            // this._login();
-        }, 200);
+            Action.navigate('Login');
+            // console.log(2121);
+        }, 1000);
     }
 
 
@@ -45,7 +46,7 @@ class SplashView extends React.Component {
         return (
             <LinearGradient
                 style={styles.container}
-                colors={['#a334a3', '#e572e5', '#a334a3']}
+                colors={[AppColors.primary, AppColors.secondary, AppColors.primary]}
             >
                 <Image source={require('@images/icon.png')} style={styles.icon} />
                 <Text color="white" style={styles.text}>Diary</Text>

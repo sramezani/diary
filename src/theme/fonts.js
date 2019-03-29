@@ -5,7 +5,7 @@ import Util from '@lib/Util';
 const base = {
     fontSize: Util.scale(14),
     fontWeight: '400',
-    color: AppColors.text.default,
+    color: AppColors.text.black,
     backgroundColor: 'rgba(0, 0, 0, 0)',
     ...Platform.select({
         ios: {
@@ -19,14 +19,17 @@ const base = {
 
 /* eslint-disable */
 export default {
-    base: base,
+    base,
 
-    xxlg: { fontSize: Util.scale(28), lineHeight: Util.scale(30) },
-	xlg : { fontSize: Util.scale(22), lineHeight: Util.scale(24) },
-	lg  : { fontSize: Util.scale(19), lineHeight: Util.scale(21) },
-	md  : { fontSize: Util.scale(16), lineHeight: Util.scale(18) },
-	sm  : { fontSize: Util.scale(14), lineHeight: Util.scale(16) },
-	xs  : { fontSize: Util.scale(12) , lineHeight: Util.scale(14) },
+    xxlg: { ...base, fontSize: Util.scale(28) },
+	xlg : { ...base, fontSize: Util.scale(22) },
+	lg  : { ...base, fontSize: Util.scale(19) },
+	md  : { ...base, fontSize: Util.scale(16) },
+	sm  : { ...base, fontSize: Util.scale(14) },
+    xs  : { ...base, fontSize: Util.scale(12) },
+    xxs : { ...base, fontSize: Util.scale(10) },
+    xxxs: { ...base, fontSize: Util.scale(9) },
+    vs  : { ...base, fontSize: Util.scale(7) },
 
 	ultra_bold: '900',
 	bold: '700',
