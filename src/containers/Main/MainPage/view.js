@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
     container: {
         ...AppStyles.container,
         ...AppStyles.align_c,
+        backgroundColor: AppColors.bg
     },
     diaryBtn: {
         position: 'absolute',
@@ -69,26 +70,14 @@ class MainPageView extends React.Component {
                 date={item.date}
                 title={item.title}
                 note={item.note}
+                onDiaryPress={() => {
+                    Action.navigate('Note', {
+                                            newNote: false,
+                                            id: item.id
+                                        });
+                                    }
+                            }
             />
-            // <View key={i} style={{ width: AppSizes.screen_width - Util.scale(20), minHeight: 50, padding: 10, borderWidth:1, borderColor: '#cfcfcf', borderRadius: 3 }}>
-            //     <View style={[AppStyles.row, { flex: 1 }]}>
-            //         <View style={{ flex: 3, paddingRight: 7 }}>
-            //             <Text numberOfLines={1} size="sm" weight="bold" color="textBlack">
-            //                 {item.title}
-            //             </Text>
-            //         </View>
-            //         <View style={{ flex: 1 }}>
-            //             <Text size="xs" color="textBlack">
-            //                 {moment(item.date).format('ll')}
-            //             </Text>
-            //         </View>
-            //     </View>
-            //     <View style={{ flex: 2, marginTop: 5 }}>
-            //         <Text numberOfLines={3} size="sm" color="textBlack">
-            //             {item.note}
-            //         </Text>
-            //     </View>
-            // </View>
         );
     }
 
@@ -101,7 +90,7 @@ class MainPageView extends React.Component {
                     ref={(ref) => {
                         this.flatList = ref;
                     }}
-                    data={this.state.data}
+                    data={this.props.diaries}
                     numColumns={1}
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={this._renderItem}
@@ -116,7 +105,7 @@ class MainPageView extends React.Component {
                 <Touchable
                     style={[styles.diaryBtn]}
                     activeOpacity={0.9}
-                    onPress={() => Action.navigate('Note')}
+                    onPress={() => Action.navigate('Note', { newNote: true })}
                 >
                     <Icon
                         style={{ marginHorizontal: Util.scale(5) }}
@@ -133,6 +122,7 @@ class MainPageView extends React.Component {
 
 /* Props ========================================== */
 MainPageView.propTypes = {
+    diaries: PropTypes.array.isRequired
 };
 
 MainPageView.defaultProps = {

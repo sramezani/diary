@@ -8,6 +8,7 @@
 const colorsRepo = {
     primary: "#a334a3",
     secondary: "#e572e5",
+    bg: "#f9a2f9",
     black: '#252525',
     textBlack: '#676767',
     white: '#efefef',

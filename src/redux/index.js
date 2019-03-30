@@ -24,7 +24,7 @@ const RootReducer = (state, action) => {
 
 // store only a subset of state of reducers
 export const SaveSubsetFilter = [
-	createFilter('core', ['test'])
+	createFilter('core', ['diaries'])
 ];
 
 export default RootReducer;

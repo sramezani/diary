@@ -18,9 +18,10 @@ const styles = StyleSheet.create({
         minHeight: Util.scale(50),
         padding: Util.scale(10),
         borderWidth: 1,
-        borderColor: '#cfcfcf',
-        borderRadius: Util.scale(3),
-        marginVertical: Util.scale(5)
+        borderColor: AppColors.secondary,
+        borderRadius: Util.scale(4),
+        marginVertical: Util.scale(5),
+        backgroundColor: "#fff"
     }
 });
 /* Component ==================================== */
@@ -34,7 +35,10 @@ class AbstractBox extends React.Component {
 
     render() {
         return (
-            <View style={styles.box}>
+            <Touchable
+                style={styles.box}
+                onPress={this.props.onDiaryPress}    
+            >
                 <View style={[AppStyles.row, { flex: 1 }]}>
                     <View style={{ flex: 3, paddingRight: Util.scale(7) }}>
                         <Text numberOfLines={1} size="sm" weight="bold" color="textBlack">
@@ -52,22 +56,29 @@ class AbstractBox extends React.Component {
                         {this.props.note}
                     </Text>
                 </View>
-            </View>
+            </Touchable>
         );
     }
 }
 
 /* Component Props ==================================== */
 AbstractBox.propTypes = {
-    date: PropTypes.string,
+    // date: PropTypes.object,
+    date: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.number,
+		PropTypes.object
+	]),
     title: PropTypes.string,
-    note: PropTypes.string
+    note: PropTypes.string,
+    onDiaryPress: PropTypes.func
 };
 
 AbstractBox.defaultProps = {
     date: '',
     title: '',
-    note: ''
+    note: '',
+    onDiaryPress: () => {}
 };
 
 /* Export Component ==================================== */

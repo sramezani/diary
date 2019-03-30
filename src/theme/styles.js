@@ -30,6 +30,9 @@ export default {
     align_b: { justifyContent: 'flex-end' },
     align_l: { alignItems: 'flex-start' },
     align_r: { alignItems: 'flex-end' },
+    text_c: { textAlign: 'center' },
+    text_r: { textAlign: 'right' },
+    text_l: { textAlign: 'left' },
 
     // ============================================================== Text Helpers
     shadowSize: {
