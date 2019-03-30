@@ -19,9 +19,14 @@ import { AppColors, AppFonts, AppStyles, AppSizes } from '@theme/';
 import Splash from '@containers/Intro/Splash/';
 import Login from '@containers/Intro/Login/';
 
-// Components
-import { Icon, Touchable } from '@components';
+import MainPage from '@containers/Main/MainPage/';
+import DiaryBook from '@containers/Main/DiaryBook/';
+import Setting from '@containers/Main/Setting/';
 
+
+// Components
+import { Icon, Touchable, Text } from '@components';
+import { Util } from '@lib/';
 
 /* Navigation Options ======================== */
 const headerOptions = {
@@ -85,6 +90,89 @@ const AutStackNavigator = createStackNavigator({
     ...navigationConfig
 });
 
+const TabNavigator = createBottomTabNavigator({
+    MainPage: {
+        screen: MainPage,
+        navigationOptions: ({ navigation }) => ({
+            tabBarLabel: ({ focused }) => <Text size="xs" style={{ textAlign: 'center', color: focused ? AppColors.primary : AppColors.darkgray }}>Home</Text>,
+            tabBarIcon: ({ focused }) =>
+                    <Icon
+                        name='home'
+                        size={Util.scale(22)}
+                        color={focused ? AppColors.primary : AppColors.darkgray}
+                    />
+        })
+    },
+    DiaryBook: {
+        screen: DiaryBook,
+        navigationOptions: ({ navigation }) => ({
+            tabBarLabel: ({ focused }) => <Text size="xs" style={{ textAlign: 'center', color: focused ? AppColors.primary : AppColors.darkgray }}>Diary Book</Text>,
+            tabBarIcon: ({ focused }) =>
+                    <Icon
+                        name='photo'
+                        size={Util.scale(22)}
+                        color={focused ? AppColors.primary : AppColors.darkgray}
+                    />
+        })
+    },
+    Setting: {
+        screen: Setting,
+        navigationOptions: ({ navigation }) => ({
+            tabBarLabel: ({ focused }) => <Text size="xs" style={{ textAlign: 'center', color: focused ? AppColors.primary : AppColors.darkgray }}>Setting</Text>,
+            tabBarIcon: ({ focused }) =>
+                    <Icon
+                        name='settings'
+                        size={Util.scale(22)}
+                        color={focused ? AppColors.primary : AppColors.darkgray}
+                    />
+        })
+    }
+}, {
+    initialRouteName: 'MainPage',
+    // activeColor: AppColors.CTA,
+    // inactiveColor: AppColors.text.tertiary,
+    shifting: false,
+    tabBarOptions: {
+        labelStyle: {
+            fontSize: 18
+        }
+    },
+    barStyle: { backgroundColor: '#fff' }
+});
+
+const MainNavigator = createStackNavigator({
+
+    AllPages: {
+        screen: TabNavigator,
+        navigationOptions: {
+            header: null
+        }
+    },
+    // MainPage: {
+    //     screen: MainPage,
+    //     navigationOptions: {
+    //         header: null
+    //     }
+    // },
+
+    // DiaryBook: {
+    //     screen: DiaryBook,
+    //     navigationOptions: {
+    //         header: null
+    //     }
+    // },
+
+    // Setting: {
+    //     screen: Setting,
+    //     navigationOptions: {
+    //         header: null
+    //     }
+    // }
+
+}, {
+    ...navigationConfig
+});
+
 const AppNavigatorScreens = {
     Splash: {
         screen: Splash,
@@ -94,10 +182,10 @@ const AppNavigatorScreens = {
         screen: AutStackNavigator,
         navigationOptions: { header: null }
     },
-    // Main: {
-    //     screen: MainNavigator,
-    //     navigationOptions: { header: null }
-    // }
+    Main: {
+        screen: MainNavigator,
+        navigationOptions: { header: null }
+    }
 };
 
 const AppNavigatorConfig = {

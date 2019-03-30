@@ -5,7 +5,7 @@ import LinearGradient from 'react-native-linear-gradient';
 
 // Consts and Libs
 import { AppSizes, AppStyles, AppColors } from '@theme/';
-import { Util } from '@lib/';
+import { Util, Action } from '@lib/';
 
 // Components
 import { Text, Touchable, Icon } from '@components/';
@@ -61,6 +61,7 @@ class LoginView extends React.Component {
             if ( this.selectedNumber.length === 4 ) {
                 if ( this.selectedNumber === '1234' ) {
                     console.log('oooooooooooops');
+                    Action.navigate('MainPage');
                     this.selectedNumber = '';
                 }
                 else {

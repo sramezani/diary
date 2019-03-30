@@ -36,7 +36,7 @@ class SplashView extends React.Component {
     componentDidMount() {
         StatusBar.setBackgroundColor(AppColors.primary);
         setTimeout(() => {
-            Action.navigate('Login');
+            Action.navigate('MainPage');
             // console.log(2121);
         }, 1000);
     }

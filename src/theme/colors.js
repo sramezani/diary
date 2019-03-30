@@ -13,7 +13,8 @@ const colorsRepo = {
     red: '#860f0f',
     green: '#a2bbbb',
     darkGreen: '#1f3737',
-    grey: '#d5d5d5'
+    grey: '#d5d5d5',
+    darkgray: '#b0adbc'
 };
 
 const text = {
