@@ -22,6 +22,7 @@ import Login from '@containers/Intro/Login/';
 import MainPage from '@containers/Main/MainPage/';
 import DiaryBook from '@containers/Main/DiaryBook/';
 import Setting from '@containers/Main/Setting/';
+import Note from '@containers/Main/Note/';
 
 
 // Components
@@ -148,26 +149,13 @@ const MainNavigator = createStackNavigator({
             header: null
         }
     },
-    // MainPage: {
-    //     screen: MainPage,
-    //     navigationOptions: {
-    //         header: null
-    //     }
-    // },
 
-    // DiaryBook: {
-    //     screen: DiaryBook,
-    //     navigationOptions: {
-    //         header: null
-    //     }
-    // },
-
-    // Setting: {
-    //     screen: Setting,
-    //     navigationOptions: {
-    //         header: null
-    //     }
-    // }
+    Note: {
+        screen: Note,
+        navigationOptions: {
+            header: null
+        }
+    }
 
 }, {
     ...navigationConfig

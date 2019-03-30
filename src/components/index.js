@@ -3,6 +3,7 @@
  *
  * */
 
+import AbstractBox from './AbstractBox';
 import Button from './Button';
 import Checkbox from './Checkbox';
 import Icon from './Icon';
@@ -13,6 +14,7 @@ import RemoteImage from './RemoteImage';
 import Touchable from './Touchable';
 
 export {
+    AbstractBox,
     Button,
     Checkbox,
     Icon,

@@ -19,7 +19,8 @@ class CustomText extends React.PureComponent {
 			...AppFonts.base,
 			color: AppColors.text[this.props.color],
 			fontSize: AppFonts[this.props.size].fontSize,
-			fontWeight: AppFonts[this.props.weight]
+			fontWeight: AppFonts[this.props.weight],
+			lineHeight: Util.scale(20)
 		};
 
 		// ---------------------- Decoration
@@ -52,7 +53,7 @@ class CustomText extends React.PureComponent {
 
 /* Props ======================================= */
 CustomText.propTypes = {
-	size: PropTypes.oneOf(['xxs', 'xs', 'sm', 'md', 'lg', 'xlg', 'xxlg']),
+	size: PropTypes.oneOf(['vs', 'xxxs', 'xxs', 'xs', 'sm', 'md', 'lg', 'xlg', 'xxlg']),
 	color: PropTypes.string,
 	weight: PropTypes.oneOf(['ultra_bold', 'bold', 'semi_bold', 'normal']),
 
