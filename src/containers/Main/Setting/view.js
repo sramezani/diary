@@ -5,7 +5,7 @@ import LinearGradient from 'react-native-linear-gradient';
 
 // Consts and Libs
 import { AppSizes, AppStyles, AppColors } from '@theme/';
-import { Util } from '@lib/';
+import { Util, Action } from '@lib/';
 
 // Components
 import { Text, Touchable, Icon } from '@components/';
@@ -32,7 +32,15 @@ class SettingView extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>Setting</Text>
+                <Touchable
+                    style={[styles.diaryBtn]}
+                    activeOpacity={0.9}
+                    onPress={() => Action.navigate('Password')}
+                >
+                    <Text>
+                        select password (pin)
+                    </Text>
+                </Touchable>
             </View>
         );
     }

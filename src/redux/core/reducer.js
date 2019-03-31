@@ -9,8 +9,8 @@ import { REHYDRATE } from 'redux-persist/lib/constants';
 // Set initial state
 export const initialState = {
     loading: false,
-    diaries: []
-
+    diaries: [],
+    pin: ''
 };
 
 const coreReducer = createReducer(state = initialState, {
@@ -55,6 +55,14 @@ const coreReducer = createReducer(state = initialState, {
         };
 	},
 
+    [coreTypes.ADD_PIN](state, action) {
+		if (!action.pin) return state;
+
+		return {
+			...state,
+			pin: action.pin
+		};
+	},
 
     [REHYDRATE](state, action) {
         if (!action.payload) return state;

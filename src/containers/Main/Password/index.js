@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 // Actions
-// import {  } from '@redux/core/actions';
+import { addPinAction } from '@redux/core/actions';
 
 
 // The component we're mapping to
@@ -9,11 +9,11 @@ import view from './view';
 
 // What data from the store shall we send to the component?
 const mapStateToProps = state => ({
-    pin: state.core.pin
 });
 
 // Any actions to map to the component?
 const mapDispatchToProps = {
+    addPinAction
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(view);

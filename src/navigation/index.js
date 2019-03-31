@@ -23,6 +23,7 @@ import MainPage from '@containers/Main/MainPage/';
 import DiaryBook from '@containers/Main/DiaryBook/';
 import Setting from '@containers/Main/Setting/';
 import Note from '@containers/Main/Note/';
+import Password from '@containers/Main/Password/';
 
 
 // Components
@@ -154,6 +155,13 @@ const MainNavigator = createStackNavigator({
         screen: Note,
         navigationOptions: {
             header: null
+        }
+    },
+
+    Password: {
+        screen: Password,
+        navigationOptions: {
+            title: 'Set Password'
         }
     }
 

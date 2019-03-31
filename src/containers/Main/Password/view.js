@@ -30,20 +30,30 @@ const styles = StyleSheet.create({
         // backgroundColor: 'red',
         width: AppSizes.screen_width
     },
+    selectedNum: {
+        flex: 1,
+        margin: 10,
+        height: '50%',
+        borderWidth: 1,
+        borderColor: '#fff',
+        ...AppStyles.align_c,
+        backgroundColor: AppColors.secondary
+    }
 });
 
 /* Component ====================================== */
-class LoginView extends React.Component {
+class PasswordView extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            selectedNumberCount: 0
+            selectedNumber: ''
         };
 
         this.selectedNumber = '';
         this.numbers = [[1, 2, 3], [4, 5, 6], [7, 8, 9], ['', 0, 'back']];
         this._selectNumber = this._selectNumber.bind(this);
+        this._submit = this._submit.bind(this);
     }
 
     componentDidMount() {
@@ -53,23 +63,18 @@ class LoginView extends React.Component {
     _selectNumber(item) {
         if (item === 'back') {
             this.selectedNumber = this.selectedNumber.slice(0, -1);
-            this.setState({ selectedNumberCount: this.selectedNumber.length });
+            this.setState({ selectedNumber: this.selectedNumber });
         }
-        else if (item) {
+        else if (item && this.selectedNumber.length < 4) {
             this.selectedNumber = `${this.selectedNumber}${item}`;
-            this.setState({ selectedNumberCount: this.selectedNumber.length });
-            if ( this.selectedNumber.length === 4 ) {
-                if ( this.selectedNumber === this.props.pin ) {
-                    Action.navigate('MainPage');
-                    this.selectedNumber = '';
-                }
-                else {
-                    this.selectedNumber = '';
-                }
-            }
+            this.setState({ selectedNumber: this.selectedNumber });
+
         }
-        
         console.log(this.selectedNumber);
+    }
+
+    _submit() {
+        this.props.addPinAction(this.state.selectedNumber);
     }
 
     render() {
@@ -80,34 +85,38 @@ class LoginView extends React.Component {
             >
                 <View style={styles.top}>
                     <Text size="lg" color="white">
-                        Enter Your Pin
+                        Select 4 digit for password
                     </Text>
+                    <Touchable onPress={() => this._submit()}>
+                        <Icon
+                            style={{ padding: Util.scale(20), paddingLeft: Util.scale(15) }}
+                            name="check"
+                            size={25}
+                            color={AppColors.white}
+                        />
+                    </Touchable>
                 </View>
                 <View style={styles.middle}>
-                    <Icon
-                        style={{ marginHorizontal: Util.scale(5) }}
-                        name={this.selectedNumber.length >= 1 ? 'radio-button-checked' : 'radio-button-unchecked' }
-                        size={Util.scale(23)}
-                        color='white'
-                    />
-                    <Icon
-                        style={{ marginHorizontal: Util.scale(5) }}
-                        name={this.selectedNumber.length >= 2 ? 'radio-button-checked' : 'radio-button-unchecked' }
-                        size={Util.scale(23)}
-                        color='white'
-                    />
-                    <Icon
-                        style={{ marginHorizontal: Util.scale(5) }}
-                        name={this.selectedNumber.length >= 3 ? 'radio-button-checked' : 'radio-button-unchecked' }
-                        size={Util.scale(23)}
-                        color='white'
-                    />
-                    <Icon
-                        style={{ marginHorizontal: Util.scale(5) }}
-                        name={this.selectedNumber.length >= 4 ? 'radio-button-checked' : 'radio-button-unchecked' }
-                        size={Util.scale(23)}
-                        color='white'
-                    />
+                    <View style={styles.selectedNum}>
+                        <Text size="md" color="white" weight="bold">
+                            {this.state.selectedNumber.charAt(0)}
+                        </Text>
+                    </View>
+                    <View style={styles.selectedNum}>
+                        <Text size="md" color="white" weight="bold">
+                            {this.state.selectedNumber.charAt(1)}
+                        </Text>
+                    </View>
+                    <View style={styles.selectedNum}>
+                        <Text size="md" color="white" weight="bold">
+                            {this.state.selectedNumber.charAt(2)}
+                        </Text>
+                    </View>
+                    <View style={styles.selectedNum}>
+                        <Text size="md" color="white" weight="bold">
+                            {this.state.selectedNumber.charAt(3)}
+                        </Text>
+                    </View>
                 </View>
                 <View style={styles.bottom}>
                     {this.numbers.map((data, index) => (
@@ -157,12 +166,12 @@ class LoginView extends React.Component {
 }
 
 /* Props ========================================== */
-LoginView.propTypes = {
-    pin: PropTypes.string.isRequired
+PasswordView.propTypes = {
+    addPinAction: PropTypes.func.isRequired
 };
 
-LoginView.defaultProps = {
+PasswordView.defaultProps = {
 };
 
 /* Export Component =============================== */
-export default LoginView;
+export default PasswordView;

@@ -36,7 +36,12 @@ class SplashView extends React.Component {
     componentDidMount() {
         StatusBar.setBackgroundColor(AppColors.primary);
         setTimeout(() => {
-            Action.navigate('MainPage');
+            if (this.props.pin) {
+                Action.navigate('Login');
+            }
+            else {
+                Action.navigate('MainPage');
+            }
             // console.log(2121);
         }, 1000);
     }
@@ -58,9 +63,11 @@ class SplashView extends React.Component {
 
 /* Props ========================================== */
 SplashView.propTypes = {
+    pin: PropTypes.string
 };
 
 SplashView.defaultProps = {
+    pin: ''
 };
 
 /* Export Component =============================== */
