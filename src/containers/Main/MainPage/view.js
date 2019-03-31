@@ -42,21 +42,6 @@ class MainPageView extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            data: [
-                {
-                    date: '1976-04-19T12:59-0500',
-                    title: 'sdf sdf sdf sd gtr bgzvv ljirg xlfvjire dsflfds dsflkj dsglkndsf',
-                    note: 'nhj mkdfsv fdjore vs kjfds dcvlijdsf dflkvfd dfjkvnfd dfvjkfdjisdf fdskjsdfklhsdfjk dsfkjndsfkljlfdsk dfkgjnkfldjglsdfg fdslkjlf fglkjfg gjjtutr gjf gfjdf dfkjndfgbn gfdkjfdgl fdjkdf'
-                },
-                {
-                    date: '1976-04-19T12:59-0500',
-                    title: 'sdf sdf sdf sd gtr bgzvv ljirg xlfvjire dsflfds dsflkj dsglkndsf',
-                    note: 'nhj mkdfsv fdjore vs kjfds dcvlijdsf dflkvfd dfjkvnfd dfvjkfdjisdf fdskjsdfklhsdfjk dsfkjndsfkljlfdsk dfkgjnkfldjglsdfg fdslkjlf fglkjfg gjjtutr gjf gfjdf dfkjndfgbn gfdkjfdgl fdjkdf'
-                }
-            ]
-        };
-
         this._renderItem = this._renderItem.bind(this);
     }
 
@@ -82,6 +67,9 @@ class MainPageView extends React.Component {
     }
 
     render() {
+        const sortedDiaries = [...this.props.diaries].sort((a, b) => {
+            return new Date(b.date) - new Date(a.date);
+        });
         return (
             <View style={styles.container}>
                 {/* <Text>MainPage</Text> */}
@@ -90,7 +78,7 @@ class MainPageView extends React.Component {
                     ref={(ref) => {
                         this.flatList = ref;
                     }}
-                    data={this.props.diaries}
+                    data={sortedDiaries}
                     numColumns={1}
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={this._renderItem}

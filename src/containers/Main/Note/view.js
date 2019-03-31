@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, View, Animated, TextInput } from 'react-native';
+import { StyleSheet, View, Animated, TextInput, ScrollView } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import moment from 'moment';
@@ -103,6 +103,7 @@ class NoteView extends React.Component {
                 title: this.state.title,
                 note: this.state.note
             }
+            console.log(data);
             this.props.addNewDiaryAction(data);
         }
         else {
@@ -159,7 +160,7 @@ class NoteView extends React.Component {
                     }
                 />
                 
-                <View style={{ padding: Util.scale(10) }}>
+                <ScrollView style={{ padding: Util.scale(10) }}>
                     <Touchable
                         onPress={this._showDateTimePicker}
                         style={styles.date}
@@ -182,7 +183,7 @@ class NoteView extends React.Component {
                     />
                     <TextInput
                         ref={(com) => { this.note = com; }}
-                        style={[styles.textInput, { textAlignVertical: 'top', height: '60%' }]}
+                        style={[styles.textInput, { marginBottom: Util.scale(20), textAlignVertical: 'top', minHeight: Util.scale(250) }]}
                         value={this.state.note}
                         placeholderTextColor={AppColors.darkgray}
                         placeholder="Start typing here..."
@@ -191,7 +192,7 @@ class NoteView extends React.Component {
                         blurOnSubmit={false}
                         onChangeText={note => this.setState({ note })}
                     />
-                </View>
+                </ScrollView>
                 
 
                 {/* <View style={styles.bottomNav}>

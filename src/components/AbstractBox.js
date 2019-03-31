@@ -41,7 +41,7 @@ class AbstractBox extends React.Component {
             >
                 <View style={[AppStyles.row, { flex: 1 }]}>
                     <View style={{ flex: 3, paddingRight: Util.scale(7) }}>
-                        <Text numberOfLines={1} size="sm" weight="bold" color="textBlack">
+                        <Text numberOfLines={1} size="sm" weight="bold" color="textBlack" style={AppStyles.text_l}>
                             {this.props.title}
                         </Text>
                     </View>
@@ -52,7 +52,7 @@ class AbstractBox extends React.Component {
                     </View>
                 </View>
                 <View style={{ flex: 2, marginTop: Util.scale(5) }}>
-                    <Text numberOfLines={3} size="sm" color="textBlack">
+                    <Text numberOfLines={3} size="sm" color="textBlack" style={AppStyles.text_l}>
                         {this.props.note}
                     </Text>
                 </View>

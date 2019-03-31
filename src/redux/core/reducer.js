@@ -24,7 +24,7 @@ const coreReducer = createReducer(state = initialState, {
     },
 
     [coreTypes.ADD_NEW_DIARY](state, action) {
-		if (!action.diary) return state;
+        if (!action.diary) return state;
 		return {
 			...state,
 			diaries: [
@@ -46,7 +46,6 @@ const coreReducer = createReducer(state = initialState, {
             newDiaries[index].title = action.diary.title;
             newDiaries[index].note = action.diary.note;
         }
-        console.log(newDiaries);
 		return {
 			...state,
 			diaries: [
