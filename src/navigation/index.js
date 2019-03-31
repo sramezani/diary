@@ -96,50 +96,51 @@ const TabNavigator = createBottomTabNavigator({
     MainPage: {
         screen: MainPage,
         navigationOptions: ({ navigation }) => ({
-            tabBarLabel: ({ focused }) => <Text size="xs" style={{ textAlign: 'center', color: focused ? AppColors.primary : AppColors.darkgray }}>Home</Text>,
+            tabBarLabel: ({ focused }) => <Text size="xs" style={{ textAlign: 'center', color: focused ? AppColors.active : AppColors.deactive }}>Home</Text>,
             tabBarIcon: ({ focused }) =>
                     <Icon
                         name='home'
                         size={Util.scale(22)}
-                        color={focused ? AppColors.primary : AppColors.darkgray}
+                        color={focused ? AppColors.active : AppColors.deactive}
                     />
         })
     },
     DiaryBook: {
         screen: DiaryBook,
         navigationOptions: ({ navigation }) => ({
-            tabBarLabel: ({ focused }) => <Text size="xs" style={{ textAlign: 'center', color: focused ? AppColors.primary : AppColors.darkgray }}>Diary Book</Text>,
+            tabBarLabel: ({ focused }) => <Text size="xs" style={{ textAlign: 'center', color: focused ? AppColors.active : AppColors.deactive }}>Diary Book</Text>,
             tabBarIcon: ({ focused }) =>
                     <Icon
                         name='photo'
                         size={Util.scale(22)}
-                        color={focused ? AppColors.primary : AppColors.darkgray}
+                        color={focused ? AppColors.active : AppColors.deactive}
                     />
         })
     },
     Setting: {
         screen: Setting,
         navigationOptions: ({ navigation }) => ({
-            tabBarLabel: ({ focused }) => <Text size="xs" style={{ textAlign: 'center', color: focused ? AppColors.primary : AppColors.darkgray }}>Setting</Text>,
+            tabBarLabel: ({ focused }) => <Text size="xs" style={{ textAlign: 'center', color: focused ? AppColors.active : AppColors.deactive }}>Setting</Text>,
             tabBarIcon: ({ focused }) =>
                     <Icon
                         name='settings'
                         size={Util.scale(22)}
-                        color={focused ? AppColors.primary : AppColors.darkgray}
+                        color={focused ? AppColors.active : AppColors.deactive}
                     />
         })
     }
 }, {
     initialRouteName: 'MainPage',
-    // activeColor: AppColors.CTA,
-    // inactiveColor: AppColors.text.tertiary,
-    shifting: false,
     tabBarOptions: {
         labelStyle: {
-            fontSize: 18
+            fontSize: 15
+        },
+        style: {
+            backgroundColor: '#5b2445',
+            borderColor: '#471a35'
         }
     },
-    barStyle: { backgroundColor: '#fff' }
+    // barStyle: { backgroundColor: AppColors.primary }
 });
 
 const MainNavigator = createStackNavigator({

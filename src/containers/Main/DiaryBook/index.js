@@ -9,6 +9,7 @@ import view from './view';
 
 // What data from the store shall we send to the component?
 const mapStateToProps = state => ({
+    diaries: state.core.diaries
 });
 
 // Any actions to map to the component?

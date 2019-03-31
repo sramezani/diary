@@ -30,7 +30,8 @@ const styles = StyleSheet.create({
         marginTop: Util.scale(10),
         padding: Util.scale(10),
         color: AppColors.textBlack,
-        lineHeight: Util.scale(20)
+        lineHeight: Util.scale(20),
+        ...AppStyles.text_l
     },
     date: {
         width: '100%',

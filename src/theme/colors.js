@@ -6,7 +6,10 @@
 
 
 const colorsRepo = {
-    primary: "#a334a3",
+    // primary: "#a334a3",
+    // secondary: "#e572e5",
+    // bg: "#f9a2f9",
+    primary: "#bf569d",
     secondary: "#e572e5",
     bg: "#f9a2f9",
     black: '#252525',
@@ -16,14 +19,17 @@ const colorsRepo = {
     green: '#a2bbbb',
     darkGreen: '#1f3737',
     grey: '#d5d5d5',
-    darkgray: '#b0adbc'
+    darkgray: '#b0adbc',
+    active: '#fff',
+    deactive: '#7f6b75'
 };
 
 const text = {
-    primary: colorsRepo.red,
-    secondary: colorsRepo.darkGreen,
+    primary: colorsRepo.primary,
+    secondary: colorsRepo.secondary,
     white: colorsRepo.white,
-    black: colorsRepo.black
+    black: colorsRepo.black,
+    textBlack: colorsRepo.textBlack,
 };
 
 const background = {
