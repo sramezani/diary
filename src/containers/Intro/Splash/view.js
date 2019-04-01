@@ -17,12 +17,11 @@ const styles = StyleSheet.create({
         ...AppStyles.align_c
     },
     icon: {
-        width: Util.scale(70),
-        height: Util.scale(60),
-        marginBottom: Util.scale(10)
+        width: AppSizes.screen_width / 1.3,
+        resizeMode: 'contain',
     },
     text: {
-        marginBottom: Util.scale(20)
+        marginTop: -Util.scale(30)
     }
 });
 
@@ -42,7 +41,6 @@ class SplashView extends React.Component {
             else {
                 Action.navigate('MainPage');
             }
-            // console.log(2121);
         }, 1000);
     }
 
@@ -53,9 +51,8 @@ class SplashView extends React.Component {
                 style={styles.container}
                 colors={[AppColors.primary, AppColors.secondary, AppColors.primary]}
             >
-                <Image source={require('@images/icon.png')} style={styles.icon} />
-                <Text color="white" style={styles.text}>Diary</Text>
-                <Loading />
+                <Image source={require('@images/tplogo.png')} style={styles.icon} />
+                <Text color="white" size="lg" style={styles.text}>write your mind</Text>
             </LinearGradient>
         );
     }

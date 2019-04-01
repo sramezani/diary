@@ -76,7 +76,7 @@ class LoginView extends React.Component {
         return (
             <LinearGradient
                 style={styles.container}
-                colors={[AppColors.primary, AppColors.primary]}
+                colors={[AppColors.primary, AppColors.primary, AppColors.primary, AppColors.primaryDark]}
             >
                 <View style={styles.top}>
                     <Text size="lg" color="white">
