@@ -56,6 +56,17 @@ class DiaryBookView extends React.Component {
             >
                 <View style={{ width: AppSizes.screen_width }}>
                     <Image source={require('@images/diary-cover2.jpg')} style={styles.image} />
+                    {
+                        sortedDiaries.length < 1 &&
+                            <View style={{ position: 'absolute', top: '50%', left: '20%' }}>
+                                <Text color="white" size="lg" weight="bold">
+                                    your diary book is empty
+                                </Text>
+                                <Text color="white" size="md" style={{ marginTop: Util.scale(5) }}>
+                                    write your mind
+                                </Text>
+                            </View>
+                    }
                 </View>
                 {sortedDiaries.map((item, i) => (
                     <View key={i} style={{ width: AppSizes.screen_width }} >

@@ -6,9 +6,6 @@
 
 
 const colorsRepo = {
-    // primary: "#a334a3",
-    // secondary: "#e572e5",
-    // bg: "#f9a2f9",
     primary: "#bf569d",
     secondary: "#cc70ae",
     bg: "#e59ece",

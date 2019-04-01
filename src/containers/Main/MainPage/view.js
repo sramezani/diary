@@ -42,6 +42,17 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
         marginBottom: Util.scale(10)
     },
+    arrowImage: {
+        width: AppSizes.screen_width,
+        height: Util.scale(170),
+        resizeMode: 'contain'
+    },
+    empty: {
+        ...AppStyles.align_c,
+        marginBottom: Util.scale(90)
+        // backgroundColor: 'red',
+
+    }
 });
 
 /* Component ====================================== */
@@ -101,6 +112,16 @@ class MainPageView extends React.Component {
                     updateCellsBatchingPeriod={15}
                     windowSize={15}
                 />
+
+                {
+                    sortedDiaries.length < 1 &&
+                        <View style={styles.empty}>
+                            <Text color="primary" size="xlg" weight="bold">
+                                write your diary
+                            </Text>
+                            <Image source={require('@images/arrow.png')} style={styles.arrowImage} />
+                        </View>
+                }
 
                 <Touchable
                     style={[styles.diaryBtn]}
