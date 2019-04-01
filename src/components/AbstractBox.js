@@ -54,7 +54,8 @@ class AbstractBox extends React.Component {
         return (
             <Touchable
                 style={styles.box}
-                onPress={this.props.onDiaryPress}    
+                onPress={this.props.onDiaryPress}
+                activeOpacity={1}
             >
                 <View style={[AppStyles.row, { flex: 1 }]}>
                     <View style={{ flex: 3, paddingRight: Util.scale(7) }}>

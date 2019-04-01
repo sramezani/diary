@@ -178,12 +178,23 @@ class PasswordView extends React.Component {
                         
                     ))}
                 </View>
-                <Button
-                    text="Save"
-                    onPress={this._submit}
-                    color="green"
-                    style={{ container: { width: '90%', height: Util.scale(50) } }}
-                />
+                {
+                    this.state.selectedNumber.length === 4 ?
+                        <Button
+                            text="Save"
+                            onPress={this._submit}
+                            color="green"
+                            style={{ container: { width: '90%', height: Util.scale(50) } }}
+                        />
+                    :
+                        <Button
+                            text="Save"
+                            // onPress={this._submit}
+                            color="desabled"
+                            style={{ container: { width: '90%', height: Util.scale(50) }, text: { color: AppColors.deactive } }}
+                        />
+                }
+                
             </LinearGradient>
             // <View style={styles.container}>
                 

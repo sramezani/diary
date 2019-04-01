@@ -33,7 +33,7 @@ class CustomButton extends React.PureComponent {
 				break;
 
 			case 'desabled':
-				containerStyle.backgroundColor = '#a5d1b7';
+				containerStyle.backgroundColor = '#c5c9b5';
 				textStyle.color = AppColors.white;
 				break;
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, View, Image } from 'react-native';
+import { StyleSheet, View, Image, ImageBackground } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 // Consts and Libs
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     },
     hr: {
         borderWidth: 0.6,
-        borderColor: AppColors.textBlack,
+        borderColor: AppColors.primary,
         width: '90%',
         left: '5%',
         borderStyle: 'dashed',
@@ -56,8 +56,12 @@ class SettingView extends React.Component {
 
     render() {
         return (
-            <View style={styles.container}>
-                <View style={{ width: AppSizes.screen_width }}>
+            <ImageBackground
+                source={require('@images/bg.png')}
+                blurRadius={9}
+                style={[styles.container, { width: AppSizes.screen_width, height: '100%', resizeMode: 'cover' }]}
+            >
+                <View style={{ width: AppSizes.screen_width, marginLeft: -Util.scale(10) }}>
                     <Image source={require('@images/top-border.png')} style={styles.image} />
                 </View>
 
@@ -73,9 +77,9 @@ class SettingView extends React.Component {
                             style={{ paddingRight: Util.scale(10) }}
                             name="lock"
                             size={22}
-                            color={AppColors.textBlack}
+                            color={AppColors.primary}
                         />
-                        <Text color="textBlack" size="md" weight="bold">
+                        <Text color="primary" size="md" weight="bold">
                             Set password (pin)
                         </Text>
                     </Touchable>
@@ -92,10 +96,10 @@ class SettingView extends React.Component {
                             style={{ paddingRight: Util.scale(10) }}
                             name="format-color-fill"
                             size={22}
-                            color="#999"
+                            color="#878787"
                         />
-                        <Text size="md" weight="bold" style={{ color: '#999' }}>
-                            Change theme (next version)
+                        <Text size="md" weight="bold" style={{ color: '#878787' }}>
+                            Change theme (coming soon...)
                         </Text>
                     </Touchable>
                 </View>
@@ -111,17 +115,17 @@ class SettingView extends React.Component {
                             style={{ paddingRight: Util.scale(10) }}
                             name="font-download"
                             size={22}
-                            color="#999"
+                            color="#878787"
                         />
-                        <Text size="md" weight="bold" style={{ color: '#999' }}>
-                            Change font (next version)
+                        <Text size="md" weight="bold" style={{ color: '#878787' }}>
+                            Change font (coming soon...)
                         </Text>
                     </Touchable>
                 </View>
                 <View style={styles.hr} />
                 
 
-            </View>
+            </ImageBackground>
         );
     }
 }

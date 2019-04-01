@@ -32,6 +32,11 @@ const styles = StyleSheet.create({
         borderStyle: 'dashed',
         borderRadius : 1,
         marginVertical: Util.scale(10)
+    },
+    previewImage: {
+        width: AppSizes.screen_width / 2,
+        height: AppSizes.screen_width / 4,
+        resizeMode: 'contain'
     }
 });
 
@@ -55,9 +60,9 @@ class DiaryBookView extends React.Component {
                 indicatorPosition="none"
             >
                 <View style={{ width: AppSizes.screen_width }}>
-                    <Image source={require('@images/diary-cover2.jpg')} style={styles.image} />
+                    <Image source={require('@images/diary-cover3.jpg')} style={styles.image} />
                     {
-                        sortedDiaries.length < 1 &&
+                        sortedDiaries.length < 1 ?
                             <View style={{ position: 'absolute', top: '50%', left: '20%' }}>
                                 <Text color="white" size="lg" weight="bold">
                                     your diary book is empty
@@ -66,6 +71,11 @@ class DiaryBookView extends React.Component {
                                     write your mind
                                 </Text>
                             </View>
+                        :
+                            <View style={{ position: 'absolute', bottom: '15%', right: '10%' }}>
+                                <Image source={require('@images/preview.png')} style={styles.previewImage} />
+                            </View>
+
                     }
                 </View>
                 {sortedDiaries.map((item, i) => (

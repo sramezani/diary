@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, View, FlatList, Image } from 'react-native';
+import { StyleSheet, View, FlatList, Image, ImageBackground } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import moment from 'moment';
 
@@ -27,14 +27,14 @@ const styles = StyleSheet.create({
         height: Util.scale(60),
         bottom: Util.scale(20),
         borderRadius: Util.scale(60),
-        borderWidth: 1,
-        borderColor: AppColors.primary,
+        borderWidth: 0.7,
+        borderColor: AppColors.primaryDark,
         backgroundColor:  AppColors.primary,
-        elevation: 5,
-        shadowColor: '#333',
+        elevation: 10,
+        shadowColor: '#000',
         shadowOffset: { width: 0, height: Util.scale(2) },
         shadowOpacity: 0.5,
-        shadowRadius: 1
+        shadowRadius: 4
     },
     image: {
         width: AppSizes.screen_width,
@@ -89,54 +89,58 @@ class MainPageView extends React.Component {
             return new Date(b.date) - new Date(a.date);
         });
         return (
-            <View style={styles.container}>
-                {/* <Text>MainPage</Text> */}
 
-                <View style={{ width: AppSizes.screen_width }}>
-                    <Image source={require('@images/top-border.png')} style={styles.image} />
-                </View>
-                
-                <FlatList
-                    ref={(ref) => {
-                        this.flatList = ref;
-                    }}
-                    contentContainerStyle={[{ paddingBottom: Util.scale(90) }]}
-                    data={sortedDiaries}
-                    numColumns={1}
-                    keyExtractor={(item, index) => index.toString()}
-                    renderItem={this._renderItem}
-
-                    removeClippedSubviews
-                    initialNumToRender={15}
-                    maxToRenderPerBatch={15}
-                    updateCellsBatchingPeriod={15}
-                    windowSize={15}
-                />
-
-                {
-                    sortedDiaries.length < 1 &&
-                        <View style={styles.empty}>
-                            <Text color="primary" size="xlg" weight="bold">
-                                write your diary
-                            </Text>
-                            <Image source={require('@images/arrow.png')} style={styles.arrowImage} />
-                        </View>
-                }
-
-                <Touchable
-                    style={[styles.diaryBtn]}
-                    activeOpacity={0.9}
-                    onPress={() => Action.navigate('Note', { newNote: true })}
+                <ImageBackground
+                    source={require('@images/bg.png')}
+                    blurRadius={4}
+                    style={[styles.container, { width: AppSizes.screen_width, height: '100%', resizeMode: 'cover' }]}
                 >
-                    <Icon
-                        style={{ marginHorizontal: Util.scale(5) }}
-                        name='create'
-                        size={Util.scale(25)}
-                        color={AppColors.white}
-                    />
-                </Touchable>
 
-            </View>
+                    <View style={{ width: AppSizes.screen_width }}>
+                        <Image source={require('@images/top-border.png')} style={styles.image} />
+                    </View>
+                    
+                    <FlatList
+                        ref={(ref) => {
+                            this.flatList = ref;
+                        }}
+                        contentContainerStyle={[{ paddingBottom: Util.scale(90) }]}
+                        data={sortedDiaries}
+                        numColumns={1}
+                        keyExtractor={(item, index) => index.toString()}
+                        renderItem={this._renderItem}
+
+                        removeClippedSubviews
+                        initialNumToRender={15}
+                        maxToRenderPerBatch={15}
+                        updateCellsBatchingPeriod={15}
+                        windowSize={15}
+                    />
+
+                    {
+                        sortedDiaries.length < 1 &&
+                            <View style={styles.empty}>
+                                <Text color="primary" size="xlg" weight="bold">
+                                    write your diary
+                                </Text>
+                                <Image source={require('@images/arrow.png')} style={styles.arrowImage} />
+                            </View>
+                    }
+
+                    <Touchable
+                        style={[styles.diaryBtn]}
+                        activeOpacity={0.9}
+                        onPress={() => Action.navigate('Note', { newNote: true })}
+                    >
+                        <Icon
+                            style={{ marginHorizontal: Util.scale(5) }}
+                            name='create'
+                            size={Util.scale(25)}
+                            color={AppColors.white}
+                        />
+                    </Touchable>
+
+                </ImageBackground>
         );
     }
 }
