@@ -104,7 +104,6 @@ class NoteView extends React.Component {
                 title: this.state.title,
                 note: this.state.note
             }
-            console.log(data);
             this.props.addNewDiaryAction(data);
         }
         else {
@@ -114,9 +113,9 @@ class NoteView extends React.Component {
                 note: this.state.note,
                 id: this.props.navigation.getParam('id')
             }
-            console.log(data);
             this.props.updateDiaryAction(data);
         }
+        Action.back();
     }
 
     render() {
@@ -166,9 +165,18 @@ class NoteView extends React.Component {
                         onPress={this._showDateTimePicker}
                         style={styles.date}
                     >
-                        <Text size="md" weight="semi_bold" color="textBlack" >
-                            {moment(this.state.date).format('ll')}
-                        </Text>
+                        <View style={AppStyles.row}>
+                            <Icon
+                                style={{ paddingRight: Util.scale(10) }}
+                                name="date-range"
+                                size={20}
+                                color={AppColors.green}
+                            />
+                            <Text size="md" weight="semi_bold" color="green" >
+                                {moment(this.state.date).format('ddd, ll')}
+                            </Text>
+                        </View>
+                        
                     </Touchable>
                     <TextInput
                         ref={(com) => { this.title = com; }}

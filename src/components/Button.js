@@ -5,7 +5,7 @@ import { Button } from 'react-native-material-ui';
 
 
 // Consts and Libs
-import { AppSizes } from '@theme/';
+import { AppSizes, AppColors } from '@theme/';
 import { Util } from '@lib/';
 
 

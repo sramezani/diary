@@ -162,7 +162,7 @@ const MainNavigator = createStackNavigator({
     Password: {
         screen: Password,
         navigationOptions: {
-            title: 'Set Password'
+            header: null
         }
     }
 

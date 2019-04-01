@@ -28,8 +28,17 @@ const styles = StyleSheet.create({
         paddingLeft: Util.scale(5),
         borderStyle: 'dashed',
         borderRadius : 1,
-        borderLeftWidth:1,
+        borderLeftWidth: 0.6,
         borderLeftColor: AppColors.grey
+    },
+    hr: {
+        borderWidth: 0.6,
+        borderColor: AppColors.grey,
+        width: '80%',
+        left: 0,
+        borderStyle: 'dashed',
+        borderRadius : 1,
+        marginVertical: Util.scale(3)
     }
 });
 /* Component ==================================== */
@@ -61,6 +70,7 @@ class AbstractBox extends React.Component {
                 </View>
                 <View style={[AppStyles.row, { flex: 2, marginTop: Util.scale(5) }]}>
                     <View style={{ flex: 3, paddingRight: Util.scale(7) }}>
+                        <View style={styles.hr} />
                         <Text numberOfLines={3} size="sm" color="textBlack" style={AppStyles.text_l}>
                             {this.props.note}
                         </Text>

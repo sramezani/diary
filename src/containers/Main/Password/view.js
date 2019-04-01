@@ -8,7 +8,7 @@ import { AppSizes, AppStyles, AppColors } from '@theme/';
 import { Util, Action } from '@lib/';
 
 // Components
-import { Text, Touchable, Icon } from '@components/';
+import { Text, Touchable, Icon, Button } from '@components/';
 
 /* Style ========================================== */
 const styles = StyleSheet.create({
@@ -35,9 +35,15 @@ const styles = StyleSheet.create({
         margin: 10,
         height: '50%',
         borderWidth: 1,
-        borderColor: '#fff',
+        borderColor: AppColors.grey,
+        borderRadius: Util.scale(4),
         ...AppStyles.align_c,
         backgroundColor: AppColors.secondary
+    },
+    backBtn: {
+        position: 'absolute',
+        top: Util.scale(10),
+        left: Util.scale(10)
     }
 });
 
@@ -51,7 +57,7 @@ class PasswordView extends React.Component {
         };
 
         this.selectedNumber = '';
-        this.numbers = [[1, 2, 3], [4, 5, 6], [7, 8, 9], ['', 0, 'back']];
+        this.numbers = [[1, 2, 3], [4, 5, 6], [7, 8, 9], ['', '0', 'back']];
         this._selectNumber = this._selectNumber.bind(this);
         this._submit = this._submit.bind(this);
     }
@@ -74,7 +80,11 @@ class PasswordView extends React.Component {
     }
 
     _submit() {
-        this.props.addPinAction(this.state.selectedNumber);
+        if (this.state.selectedNumber.length === 4) {
+            this.props.addPinAction(this.state.selectedNumber);
+            Action.back();
+        }
+        
     }
 
     render() {
@@ -83,18 +93,30 @@ class PasswordView extends React.Component {
                 style={styles.container}
                 colors={[AppColors.primary, AppColors.primary]}
             >
+                <View style={styles.backBtn}>
+                    <Touchable onPress={() => Action.back()}>
+                        <Icon
+                            style={{ padding: Util.scale(10) }}
+                            name="arrow-back"
+                            size={25}
+                            color={AppColors.white}
+                        />
+                    </Touchable>
+                </View>
+
                 <View style={styles.top}>
                     <Text size="lg" color="white">
                         Select 4 digit for password
                     </Text>
-                    <Touchable onPress={() => this._submit()}>
+                    {/* <Touchable onPress={() => this._submit()}>
                         <Icon
                             style={{ padding: Util.scale(20), paddingLeft: Util.scale(15) }}
                             name="check"
                             size={25}
                             color={AppColors.white}
                         />
-                    </Touchable>
+                    </Touchable> */}
+                    
                 </View>
                 <View style={styles.middle}>
                     <View style={styles.selectedNum}>
@@ -156,6 +178,12 @@ class PasswordView extends React.Component {
                         
                     ))}
                 </View>
+                <Button
+                    text="Save"
+                    onPress={this._submit}
+                    color="green"
+                    style={{ container: { width: '90%', height: Util.scale(50) } }}
+                />
             </LinearGradient>
             // <View style={styles.container}>
                 

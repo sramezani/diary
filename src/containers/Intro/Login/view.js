@@ -42,7 +42,7 @@ class LoginView extends React.Component {
         };
 
         this.selectedNumber = '';
-        this.numbers = [[1, 2, 3], [4, 5, 6], [7, 8, 9], ['', 0, 'back']];
+        this.numbers = [[1, 2, 3], [4, 5, 6], [7, 8, 9], ['', '0', 'back']];
         this._selectNumber = this._selectNumber.bind(this);
     }
 
