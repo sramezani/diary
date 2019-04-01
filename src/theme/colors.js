@@ -16,7 +16,7 @@ const colorsRepo = {
     textBlack: '#676767',
     white: '#efefef',
     red: '#860f0f',
-    green: '#a2bbbb',
+    green: '#779317',
     darkGreen: '#1f3737',
     grey: '#d5d5d5',
     darkgray: '#b0adbc',
@@ -30,6 +30,7 @@ const text = {
     white: colorsRepo.white,
     black: colorsRepo.black,
     textBlack: colorsRepo.textBlack,
+    green: colorsRepo.green,
 };
 
 const background = {

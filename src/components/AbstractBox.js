@@ -21,7 +21,15 @@ const styles = StyleSheet.create({
         borderColor: AppColors.secondary,
         borderRadius: Util.scale(4),
         marginVertical: Util.scale(5),
-        backgroundColor: "#fff"
+        backgroundColor: "#efefef"
+    },
+    rightBox: {
+        flex: 1,
+        paddingLeft: Util.scale(5),
+        borderStyle: 'dashed',
+        borderRadius : 1,
+        borderLeftWidth:1,
+        borderLeftColor: AppColors.grey
     }
 });
 /* Component ==================================== */
@@ -45,17 +53,24 @@ class AbstractBox extends React.Component {
                             {this.props.title}
                         </Text>
                     </View>
-                    <View style={{ flex: 1 }}>
-                        <Text size="xs" color="textBlack">
+                    <View style={styles.rightBox}>
+                        <Text size="xs" color="green">
                             {moment(this.props.date).format('ll')}
                         </Text>
                     </View>
                 </View>
-                <View style={{ flex: 2, marginTop: Util.scale(5) }}>
-                    <Text numberOfLines={3} size="sm" color="textBlack" style={AppStyles.text_l}>
-                        {this.props.note}
-                    </Text>
+                <View style={[AppStyles.row, { flex: 2, marginTop: Util.scale(5) }]}>
+                    <View style={{ flex: 3, paddingRight: Util.scale(7) }}>
+                        <Text numberOfLines={3} size="sm" color="textBlack" style={AppStyles.text_l}>
+                            {this.props.note}
+                        </Text>
+                    </View>
+                    <View style={[styles.rightBox, { marginTop: -Util.scale(5) }]}>
+                        
+                    </View>
                 </View>
+
+
             </Touchable>
         );
     }

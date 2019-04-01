@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, View, FlatList } from 'react-native';
+import { StyleSheet, View, FlatList, Image } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import moment from 'moment';
 
@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
     container: {
         ...AppStyles.container,
         ...AppStyles.align_c,
+        paddingBottom: 0,
         backgroundColor: AppColors.bg
     },
     diaryBtn: {
@@ -34,6 +35,12 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: Util.scale(2) },
         shadowOpacity: 0.5,
         shadowRadius: 1
+    },
+    image: {
+        width: AppSizes.screen_width,
+        height: Util.scale(80),
+        resizeMode: 'contain',
+        marginBottom: Util.scale(10)
     },
 });
 
@@ -74,10 +81,15 @@ class MainPageView extends React.Component {
             <View style={styles.container}>
                 {/* <Text>MainPage</Text> */}
 
+                <View style={{ width: AppSizes.screen_width }}>
+                    <Image source={require('@images/top-border.png')} style={styles.image} />
+                </View>
+                
                 <FlatList
                     ref={(ref) => {
                         this.flatList = ref;
                     }}
+                    contentContainerStyle={[{ paddingBottom: Util.scale(90) }]}
                     data={sortedDiaries}
                     numColumns={1}
                     keyExtractor={(item, index) => index.toString()}

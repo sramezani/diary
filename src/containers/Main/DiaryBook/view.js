@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
     image: {
         width: AppSizes.screen_width,
         height: '100%',
+        resizeMode: 'cover'
         // marginBottom: Util.scale(10)
     },
     hr: {
