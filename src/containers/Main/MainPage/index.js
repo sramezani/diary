@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 // Actions
-// import {  } from '@redux/core/actions';
+import { deleteDiaryAction } from '@redux/core/actions';
 
 
 // The component we're mapping to
@@ -14,6 +14,7 @@ const mapStateToProps = state => ({
 
 // Any actions to map to the component?
 const mapDispatchToProps = {
+    deleteDiaryAction
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(view);

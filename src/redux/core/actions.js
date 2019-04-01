@@ -6,7 +6,8 @@ import { Util, AppAPI } from '@lib/';
 import {
     addNewDiary,
     updateDiary,
-    addPin
+    addPin,
+    deleteDiary
 } from '@redux/core/actionCreators';
 
 
@@ -36,6 +37,16 @@ export function updateDiaryAction(data) {
 export function addPinAction(pin) {
     return dispatch => new Promise(async (resolve, reject) => {
         dispatch(addPin(pin));
+        return resolve();
+    });
+}
+
+/**
+  * add pin (login)
+*/
+export function deleteDiaryAction(id) {
+    return dispatch => new Promise(async (resolve, reject) => {
+        dispatch(deleteDiary(id));
         return resolve();
     });
 }

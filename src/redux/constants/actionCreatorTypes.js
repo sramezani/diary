@@ -6,4 +6,5 @@ export const coreTypes = {
 	ADD_NEW_DIARY: 'ADD_NEW_DIARY',
 	UPDATE_DIARY: 'UPDATE_DIARY',
 	ADD_PIN: 'ADD_PIN',
+	DELETE_DIARY: 'DELETE_DIARY',
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, View, FlatList, Image, ImageBackground } from 'react-native';
+import { StyleSheet, View, FlatList, Image, ImageBackground, Alert } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import moment from 'moment';
 
@@ -61,10 +61,32 @@ class MainPageView extends React.Component {
         super(props);
 
         this._renderItem = this._renderItem.bind(this);
+        this._deleteDiary = this._deleteDiary.bind(this);
     }
 
     componentDidMount() {
         
+    }
+
+    _deleteDiary(id) {
+        Alert.alert(
+            'Are you want delete this diary?',
+            '',
+            [
+                {
+                    text: 'no',
+                    onPress: () => {
+                    },
+                    style: 'cancel'
+                },
+                {
+                    text: 'yes',
+                    onPress: () => {
+                        this.props.deleteDiaryAction(id);
+                    }
+                }
+            ]
+        );
     }
 
     _renderItem({ item, i }) {
@@ -80,6 +102,7 @@ class MainPageView extends React.Component {
                                         });
                                     }
                             }
+                onDeletePress={() => { this._deleteDiary(item.id); }}
             />
         );
     }
@@ -147,7 +170,8 @@ class MainPageView extends React.Component {
 
 /* Props ========================================== */
 MainPageView.propTypes = {
-    diaries: PropTypes.array.isRequired
+    diaries: PropTypes.array.isRequired,
+    deleteDiaryAction: PropTypes.func.isRequired
 };
 
 MainPageView.defaultProps = {

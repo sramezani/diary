@@ -6,6 +6,8 @@ import { coreTypes } from '@redux/constants/actionCreatorTypes';
 import createReducer from '@redux/constants/createReducer';
 import { REHYDRATE } from 'redux-persist/lib/constants';
 
+import { Util } from '@lib/';
+
 // Set initial state
 export const initialState = {
     loading: false,
@@ -31,7 +33,7 @@ const coreReducer = createReducer(state = initialState, {
 				...state.diaries,
 				{
 					...action.diary,
-					id: state.diaries.length + 1
+					id: `${Util.randomNumber(100, 999)}${state.diaries.length}`
 				}
 			]
 		};
@@ -61,6 +63,28 @@ const coreReducer = createReducer(state = initialState, {
 			...state,
 			pin: action.pin
 		};
+    },
+    
+    [coreTypes.DELETE_DIARY](state, action) {
+		if (!action.id) return state;
+
+		// const newDiaries = [];
+        // state.libraryBooks.forEach((diary) => {
+        //     if (diary.id !== action.id) {
+        //         newDiaries.push(diary);
+        //     }
+        // });
+
+        const newDiaries = state.diaries.filter((obj) => { 
+            return obj.id != action.id; 
+        });
+
+        return {
+            ...state,
+            diaries: [
+                ...newDiaries
+            ]
+        };
 	},
 
     [REHYDRATE](state, action) {

@@ -9,7 +9,7 @@ import { AppStyles, AppSizes, AppColors } from '@theme/';
 import { Util } from '@lib/';
 
 // component
-import { Text, Touchable } from '@components/';
+import { Text, Touchable, Icon } from '@components/';
 
 /* Styles ==================================== */
 const styles = StyleSheet.create({
@@ -77,7 +77,18 @@ class AbstractBox extends React.Component {
                         </Text>
                     </View>
                     <View style={[styles.rightBox, { marginTop: -Util.scale(5) }]}>
-                        
+                        <Touchable
+                            style={{ position: 'absolute', bottom: 0, right: 0, padding: 2 }}
+                            onPress={this.props.onDeletePress}
+                            activeOpacity={1}
+                        >
+                            <Icon
+                                style={{ marginHorizontal: Util.scale(5) }}
+                                name='delete'
+                                size={Util.scale(22)}
+                                color={AppColors.green}
+                            />
+                        </Touchable>
                     </View>
                 </View>
 
@@ -97,14 +108,16 @@ AbstractBox.propTypes = {
 	]),
     title: PropTypes.string,
     note: PropTypes.string,
-    onDiaryPress: PropTypes.func
+    onDiaryPress: PropTypes.func,
+    onDeletePress: PropTypes.func
 };
 
 AbstractBox.defaultProps = {
     date: '',
     title: '',
     note: '',
-    onDiaryPress: () => {}
+    onDiaryPress: () => {},
+    onDeletePress: () => {}
 };
 
 /* Export Component ==================================== */

@@ -64,6 +64,10 @@ const Util = {
 		return error;
 	},
 
+	randomNumber: (min, max) => {
+    	return Math.floor(Math.random()*(max-min+1)+min);
+	},
+
 	sortByProp: (arr, prop) => {
 		arr.sort((a, b) => a[prop] - b[prop]);
 	},

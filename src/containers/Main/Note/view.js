@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, View, Animated, TextInput, ScrollView } from 'react-native';
+import { StyleSheet, View, Animated, TextInput, ScrollView, ImageBackground } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import moment from 'moment';
@@ -120,7 +120,12 @@ class NoteView extends React.Component {
 
     render() {
         return (
-            <View style={[styles.container, { padding: 0 }]}>
+            
+            <ImageBackground
+                source={require('@images/bg.png')}
+                blurRadius={4}
+                style={[styles.container, { padding: 0, width: AppSizes.screen_width, height: '100%', resizeMode: 'cover' }]}
+            >
                 <Toolbar
                     // centerElement="Write note"
                     centerElement={
@@ -216,7 +221,8 @@ class NoteView extends React.Component {
                     onCancel={this._hideDateTimePicker}
                     date={new Date(this.state.date)}
                 />
-            </View>
+                </ImageBackground>
+            
         );
     }
 }
