@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, View, FlatList, Image, ImageBackground, Alert } from 'react-native';
+import { StyleSheet, View, FlatList, Image, ImageBackground, Alert, Share } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import moment from 'moment';
 
@@ -62,6 +62,7 @@ class MainPageView extends React.Component {
 
         this._renderItem = this._renderItem.bind(this);
         this._deleteDiary = this._deleteDiary.bind(this);
+        this._shareDiary = this._shareDiary.bind(this);
     }
 
     componentDidMount() {
@@ -89,6 +90,30 @@ class MainPageView extends React.Component {
         );
     }
 
+    async _shareDiary (title, note) {
+        const str = `${title} - ${note}`;
+        try {
+          const result = await Share.share({
+            message: str
+          });
+    
+          if (result.action === Share.sharedAction) {
+            if (result.activityType) {
+                // shared with activity type of result.activityType
+                console.log(111);
+            } else {
+                // shared
+                console.log(222);
+            }
+          } else if (result.action === Share.dismissedAction) {
+                // dismissed
+                console.log(333);
+          }
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+
     _renderItem({ item, i }) {
         return (
             <AbstractBox
@@ -103,6 +128,7 @@ class MainPageView extends React.Component {
                                     }
                             }
                 onDeletePress={() => { this._deleteDiary(item.id); }}
+                onSharePress={() => { this._shareDiary(item.title, item.note); }}
             />
         );
     }

@@ -77,18 +77,33 @@ class AbstractBox extends React.Component {
                         </Text>
                     </View>
                     <View style={[styles.rightBox, { marginTop: -Util.scale(5) }]}>
-                        <Touchable
-                            style={{ position: 'absolute', bottom: 0, right: 0, padding: 2 }}
-                            onPress={this.props.onDeletePress}
-                            activeOpacity={1}
-                        >
-                            <Icon
-                                style={{ marginHorizontal: Util.scale(5) }}
-                                name='delete'
-                                size={Util.scale(22)}
-                                color={AppColors.green}
-                            />
-                        </Touchable>
+                        <View style={[AppStyles.row, { position: 'absolute', bottom: 0, right: 0 }]}>
+                            <Touchable
+                                style={{ padding: Util.scale(2) }}
+                                onPress={this.props.onSharePress}
+                                activeOpacity={1}
+                            >
+                                <Icon
+                                    style={{ marginHorizontal: Util.scale(5) }}
+                                    name='share'
+                                    size={Util.scale(17)}
+                                    color={AppColors.green}
+                                />
+                            </Touchable>
+                            <Touchable
+                                style={{ padding: Util.scale(2) }}
+                                onPress={this.props.onDeletePress}
+                                activeOpacity={1}
+                            >
+                                <Icon
+                                    style={{ marginHorizontal: Util.scale(5) }}
+                                    name='delete'
+                                    size={Util.scale(20)}
+                                    color={AppColors.green}
+                                />
+                            </Touchable>
+                        </View>
+                        
                     </View>
                 </View>
 
@@ -109,7 +124,8 @@ AbstractBox.propTypes = {
     title: PropTypes.string,
     note: PropTypes.string,
     onDiaryPress: PropTypes.func,
-    onDeletePress: PropTypes.func
+    onDeletePress: PropTypes.func,
+    onSharePress: PropTypes.func
 };
 
 AbstractBox.defaultProps = {
@@ -117,7 +133,8 @@ AbstractBox.defaultProps = {
     title: '',
     note: '',
     onDiaryPress: () => {},
-    onDeletePress: () => {}
+    onDeletePress: () => {},
+    onSharePress: () => {}
 };
 
 /* Export Component ==================================== */
